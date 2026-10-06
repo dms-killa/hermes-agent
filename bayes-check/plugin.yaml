@@ -1,0 +1,45 @@
+name: bayes-check
+version: 0.1.0
+description: >-
+  Deterministic Bayesian scoring of the factual claims in an answer, with a forced
+  calibrated-confidence footer. Opt-in per session (/bayes on). Zero extra LLM calls.
+manifest_version: 2
+api_version: 1
+license: MIT
+tags: [verification, bayesian, calibration, local-friendly]
+provides_tools:
+  - bayes_score
+provides_hooks:
+  - pre_llm_call
+  - post_tool_call
+  - transform_llm_output
+  - post_llm_call
+  - pre_tool_call
+  - pre_api_request
+  - subagent_start
+  - subagent_stop
+config_schema:
+  mode:
+    type: str
+    default: annotate
+    description: "off | annotate | nudge — off disables the plugin; annotate lists unverified claim candidates when bayes_score was skipped; nudge only marks the answer unscored."
+  local_mode:
+    type: str
+    default: auto
+    description: "auto | force_local | force_cloud — auto classifies from provider + base_url seen on pre_api_request."
+  min_posterior_plain:
+    type: float
+    default: 0.9
+    description: "Posterior at or above this: supported, state plainly."
+  min_posterior_hedge:
+    type: float
+    default: 0.5
+    description: "Posterior below this: unsupported, remove or mark unverified. Between the two: qualify."
+  block_delegation_local:
+    type: bool
+    default: true
+    description: "On opted-in sessions running a local model, block delegate_task (top-level delegations are always background)."
+  auto_enable_on_research:
+    type: bool
+    default: false
+    description: "Opt a session in automatically when a user message looks like a research/advisory question (keyword heuristic, no model call)."
