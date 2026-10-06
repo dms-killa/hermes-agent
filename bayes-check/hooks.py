@@ -32,21 +32,23 @@ TURN_INSTRUCTION = (
 RESEARCH_NOTE = " This turn looks like a research/advisory question, so verification was enabled automatically."
 
 
-def session_key() -> str:
-    """The bound gateway session key (``""`` on CLI or outside a session scope)."""
+def _session_env(name: str) -> str:
+    """Read a ``HERMES_SESSION_*`` var the way Hermes does (ContextVar first, then the process env).
+    Only the import can fail, when the plugin runs outside a Hermes install (unit tests)."""
     try:
         from gateway.session_context import get_session_env
-        return get_session_env("HERMES_SESSION_KEY", "")
-    except Exception:
-        return os.environ.get("HERMES_SESSION_KEY", "")
+    except ImportError:
+        return os.environ.get(name, "")
+    return get_session_env(name, "")
+
+
+def session_key() -> str:
+    """The bound gateway session key (``""`` on CLI or outside a session scope)."""
+    return _session_env("HERMES_SESSION_KEY")
 
 
 def current_session_id() -> str:
-    try:
-        from gateway.session_context import get_session_env
-        return get_session_env("HERMES_SESSION_ID", "")
-    except Exception:
-        return os.environ.get("HERMES_SESSION_ID", "")
+    return _session_env("HERMES_SESSION_ID")
 
 
 def opted_in(session_id: str) -> bool:
