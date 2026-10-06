@@ -84,6 +84,7 @@ Data flow for an opted-in turn:
 | D3 | Block `delegate_task` with `mode="background"`, optionally all | `delegate_task` has no `mode` argument. Model-issued top-level delegations are **always** background (`tools/delegate_tool.py::_model_background_value`); only orchestrator children (depth > 0) run synchronously. | With `block_delegation_local: true` (default) every `delegate_task` call on an opted-in local session is blocked. `false` allows delegation; children inherit opt-in (see N6) so their own transform still gates their output. |
 | D4 | `pre_tool_call` block shape unconfirmed | `_get_pre_tool_call_directive_details`: `{"action": "block", "message": str}`; a block **without** a non-empty message is ignored. | Always returns a non-empty message. |
 | D5 | Subagent ledger keyed by `parent_turn_id` (from `subagent_stop`) | `subagent_stop` reads `parent_agent._current_turn_id` **when the child finishes** (`delegate_tool_results.py::_fire_subagent_stop_hooks`). For background children this is whatever turn the parent is in by then, not the dispatching turn. | The subagent ledger is keyed by `child_session_id` (unique); the dispatching `parent_turn_id` is taken from `subagent_start` and stored on the entry. |
+| D7 | `bayes_score` handler writes the turn ledger keyed by `turn_id` | Registry handlers receive only `task_id`, `session_id`, `user_task` (`model_tools._execute_tool` → `registry.dispatch`); `turn_id` lives only in a private approval ContextVar. | The handler stashes results under a fresh `call_id` returned in its JSON; `post_tool_call` (which carries `turn_id` and the `result`) binds that call to the turn and stamps `turn_id` on the SQLite rows. A forged/unknown `call_id` binds nothing. |
 | D6 | Documented `transform_llm_output` payload lacks `turn_id` | Call site passes `turn_id` (`agent/turn_finalizer.py::apply_llm_output_transform`). | Callbacks take `**kwargs` and read `turn_id`. |
 
 ## 4. New judgment (not covered by the spec)
@@ -139,6 +140,12 @@ Data flow for an opted-in turn:
 - **N13 Rotation.** When the DB file exceeds `max_db_bytes` (50 MB), the oldest unlabelled claim
   rows are deleted in chunks (labelled rows are the learning signal and are kept) and the DB is
   vacuumed.
+
+- **N14 Test harness.** `tests/pytest.ini` makes `tests/` the pytest rootdir (otherwise pytest
+  collects the plugin root, which has `__init__.py` and a non-identifier name, as a package), and
+  `tests/conftest.py` loads the plugin as package `bayes_check` with the plugin dir kept off
+  `sys.path` (the spec-mandated `tools.py` would otherwise shadow Hermes' `tools` package).
+  Run with `pytest tests` from the plugin dir.
 
 ## 5. Verify-in-dev plan
 
