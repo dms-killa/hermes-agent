@@ -1,0 +1,54 @@
+{
+  "nodes": [
+    {
+      "id": "openai-compatible-chat-00000000-0000-4000-8000-0000000000a1",
+      "type": "openai-compatible-chat",
+      "name": "Loopback node",
+      "prefix": "loopnode",
+      "apiType": "chat",
+      "baseUrl": "http://127.0.0.1:8080/v1",
+      "chatPath": null,
+      "modelsPath": null,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "openai-compatible-chat-00000000-0000-4000-8000-0000000000b2",
+      "type": "openai-compatible-chat",
+      "name": "LAN node",
+      "prefix": "lannode",
+      "apiType": "chat",
+      "baseUrl": "http://gpu-node.example.lan:11434/v1",
+      "chatPath": null,
+      "modelsPath": null,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "openai-compatible-chat-00000000-0000-4000-8000-0000000000c3",
+      "type": "openai-compatible-chat",
+      "name": "Private-range node",
+      "prefix": "privnode",
+      "apiType": "chat",
+      "baseUrl": "http://10.20.30.40:8000/v1",
+      "chatPath": null,
+      "modelsPath": null,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "openai-compatible-chat-00000000-0000-4000-8000-0000000000d4",
+      "type": "openai-compatible-chat",
+      "name": "Hosted compatible API",
+      "prefix": "cloudnode",
+      "apiType": "chat",
+      "baseUrl": "https://api.example.com/v1",
+      "chatPath": null,
+      "modelsPath": null,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "total": 4,
+  "ccCompatibleProviderEnabled": false
+}

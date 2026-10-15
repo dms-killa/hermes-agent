@@ -1,0 +1,128 @@
+{
+  "connections": [
+    {
+      "id": "conn-loop",
+      "provider": "openai-compatible-chat-00000000-0000-4000-8000-0000000000a1",
+      "authType": "apikey",
+      "name": "loop-small",
+      "displayName": null,
+      "email": null,
+      "priority": 1,
+      "isActive": true,
+      "testStatus": "active",
+      "apiKey": "PLACEHOLDER-MASKED-KEY-****",
+      "accessToken": null,
+      "refreshToken": null,
+      "idToken": null,
+      "maxConcurrent": 1,
+      "providerSpecificData": null,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "conn-lan",
+      "provider": "openai-compatible-chat-00000000-0000-4000-8000-0000000000b2",
+      "authType": "apikey",
+      "name": "lan-medium",
+      "displayName": null,
+      "email": null,
+      "priority": 1,
+      "isActive": true,
+      "testStatus": "active",
+      "apiKey": "PLACEHOLDER-MASKED-KEY-****",
+      "accessToken": null,
+      "refreshToken": null,
+      "idToken": null,
+      "maxConcurrent": 2,
+      "providerSpecificData": {
+        "baseUrl": "http://gpu-node.example.lan:11434/v1"
+      },
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "conn-priv",
+      "provider": "openai-compatible-chat-00000000-0000-4000-8000-0000000000c3",
+      "authType": "apikey",
+      "name": "private-large",
+      "displayName": null,
+      "email": null,
+      "priority": 1,
+      "isActive": true,
+      "testStatus": "active",
+      "apiKey": "PLACEHOLDER-MASKED-KEY-****",
+      "accessToken": null,
+      "refreshToken": null,
+      "idToken": null,
+      "maxConcurrent": null,
+      "providerSpecificData": {
+        "baseUrl": "http://10.20.30.40:8000/v1",
+        "timeoutMs": 900000
+      },
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "conn-cloud-compat",
+      "provider": "openai-compatible-chat-00000000-0000-4000-8000-0000000000d4",
+      "authType": "apikey",
+      "name": "hosted-compat",
+      "displayName": null,
+      "email": null,
+      "priority": 1,
+      "isActive": true,
+      "testStatus": "active",
+      "apiKey": "PLACEHOLDER-MASKED-KEY-****",
+      "accessToken": null,
+      "refreshToken": null,
+      "idToken": null,
+      "maxConcurrent": null,
+      "providerSpecificData": {
+        "baseUrl": "https://api.example.com/v1"
+      },
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "conn-llamacpp",
+      "provider": "llama-cpp",
+      "authType": "apikey",
+      "name": "llamacpp-native",
+      "displayName": null,
+      "email": null,
+      "priority": 1,
+      "isActive": true,
+      "testStatus": "active",
+      "apiKey": "PLACEHOLDER-MASKED-KEY-****",
+      "accessToken": null,
+      "refreshToken": null,
+      "idToken": null,
+      "maxConcurrent": 1,
+      "providerSpecificData": {
+        "baseUrl": "http://127.0.0.1:8081/v1"
+      },
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "conn-openai",
+      "provider": "openai",
+      "authType": "apikey",
+      "name": "openai-key",
+      "displayName": null,
+      "email": null,
+      "priority": 1,
+      "isActive": true,
+      "testStatus": "active",
+      "apiKey": "PLACEHOLDER-MASKED-KEY-****",
+      "accessToken": null,
+      "refreshToken": null,
+      "idToken": null,
+      "maxConcurrent": null,
+      "providerSpecificData": null,
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "total": 6
+}

@@ -1,0 +1,23 @@
+{
+  "metrics": {
+    "strategy": "priority",
+    "totalRequests": 40,
+    "totalSuccesses": 39,
+    "totalFallbacks": 1,
+    "totalLatencyMs": 36000,
+    "productionTraffic": true,
+    "persistedSkipBypassed": false,
+    "avgLatencyMs": 900,
+    "successRate": 98,
+    "fallbackRate": 3,
+    "intentCounts": {},
+    "byModel": {
+      "loopnode/small-model": {
+        "requests": 40,
+        "successRate": 98,
+        "avgLatencyMs": 900
+      }
+    },
+    "byTarget": {}
+  }
+}

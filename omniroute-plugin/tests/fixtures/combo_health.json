@@ -1,0 +1,52 @@
+{
+  "timeRange": "24h",
+  "combos": [
+    {
+      "comboId": "00000000-0000-4000-8000-00000000c001",
+      "comboName": "structured-local",
+      "strategy": "priority",
+      "models": [
+        "loopnode/small-model",
+        "llama-cpp/small-model"
+      ],
+      "targetHealth": [
+        {
+          "executionKey": "s1",
+          "stepId": "s1",
+          "model": "loopnode/small-model",
+          "provider": "openai-compatible-chat-00000000-0000-4000-8000-0000000000a1",
+          "connectionId": "conn-loop",
+          "label": null,
+          "requests": 40,
+          "successRate": 97.5,
+          "avgLatencyMs": 900,
+          "lastStatus": "ok",
+          "lastUsedAt": "2026-01-01T00:00:00.000Z",
+          "quotaRemainingPct": null,
+          "quotaIsExhausted": null,
+          "quotaTrend": null,
+          "quotaScope": "none"
+        }
+      ],
+      "quotaHealth": {
+        "providers": [],
+        "worstRemainingPct": null
+      },
+      "usageSkew": {
+        "modelDistribution": [
+          {
+            "model": "loopnode/small-model",
+            "requestShare": 1,
+            "tokenShare": 1
+          }
+        ],
+        "giniCoefficient": 0
+      },
+      "performance": {
+        "avgLatencyMs": 900,
+        "successRate": 97.5,
+        "totalRequests": 40
+      }
+    }
+  ]
+}

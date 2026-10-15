@@ -1,0 +1,27 @@
+name: omniroute
+version: 0.2.0
+description: >-
+  OmniRoute integration: read-only audits, combo checks and inspection (toolset omniroute), plus a
+  reversible, verified combo write path (plan in omniroute; apply/rollback in omniroute_write, each
+  call sent to Hermes's approval gate). Hermes sends requests to combos by name; OmniRoute picks
+  the backend.
+author: hermes-omniroute-plugin contributors
+manifest_version: 2
+api_version: 1
+license: MIT
+tags: [omniroute, gateway, llm-routing, diagnostics]
+requires_env:
+  - OMNIROUTE_BASE_URL
+  - OMNIROUTE_API_KEY
+provides_tools:
+  - omniroute_audit
+  - hermes_combo_check
+  - omniroute_connections
+  - omniroute_combos
+  - omniroute_call_logs
+  - omniroute_combo_health
+  - omniroute_combo_plan
+  - omniroute_combo_apply
+  - omniroute_combo_rollback
+provides_hooks:
+  - pre_tool_call
