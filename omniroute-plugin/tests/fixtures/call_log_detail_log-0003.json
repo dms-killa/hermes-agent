@@ -1,0 +1,52 @@
+{
+  "id": "log-0003",
+  "timestamp": "2026-01-01T00:00:00Z",
+  "method": "POST",
+  "path": "/v1/chat/completions",
+  "status": 200,
+  "model": "small-model",
+  "requestedModel": "loopnode/small-model",
+  "provider": "openai-compatible-chat-00000000-0000-4000-8000-0000000000a1",
+  "providerDisplay": "Loopback node",
+  "account": "loop-small",
+  "connectionId": "conn-loop",
+  "duration": 850,
+  "ttft": 120,
+  "tokens": {
+    "in": 12,
+    "out": 3,
+    "cacheRead": null,
+    "cacheWrite": null,
+    "reasoning": null,
+    "compressed": null
+  },
+  "cacheSource": "upstream",
+  "requestType": "chat",
+  "sourceFormat": "openai",
+  "targetFormat": "openai",
+  "apiKeyId": "key-1",
+  "apiKeyName": "hermes",
+  "comboName": "spill",
+  "comboStepId": "s1",
+  "comboExecutionKey": "s1",
+  "error": null,
+  "detailState": "ready",
+  "requestSummary": null,
+  "hasRequestBody": true,
+  "hasResponseBody": true,
+  "hasPipelineDetails": false,
+  "correlationId": null,
+  "active": false,
+  "completed": true,
+  "requestBody": {
+    "model": "spill",
+    "max_tokens": 4,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Say ok"
+      }
+    ]
+  },
+  "responseBody": null
+}

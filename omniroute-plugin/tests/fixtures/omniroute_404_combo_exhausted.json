@@ -1,0 +1,19 @@
+{
+  "error": {
+    "message": "loopnode/small-model: model \u2014 Not Found (HTTP 404)",
+    "type": "invalid_request_error",
+    "code": "model_not_found"
+  },
+  "diagnostics": {
+    "poolSize": 1,
+    "attempted": 1,
+    "excluded": [],
+    "attemptOrder": [
+      {
+        "provider": "openai-compatible-chat-00000000-0000-4000-8000-0000000000a1",
+        "model": "small-model"
+      }
+    ],
+    "terminalReason": "Not Found"
+  }
+}

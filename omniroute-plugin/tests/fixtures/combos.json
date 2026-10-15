@@ -1,0 +1,121 @@
+{
+  "combos": [
+    {
+      "id": "00000000-0000-4000-8000-00000000c001",
+      "name": "structured-local",
+      "strategy": "priority",
+      "models": [
+        {
+          "id": "s1",
+          "kind": "model",
+          "model": "loopnode/small-model",
+          "weight": 0,
+          "providerId": "loopnode",
+          "connectionId": "conn-loop"
+        },
+        {
+          "id": "s2",
+          "kind": "model",
+          "model": "llama-cpp/small-model",
+          "weight": 0,
+          "providerId": "llama-cpp",
+          "connectionId": "conn-llamacpp"
+        }
+      ],
+      "config": {},
+      "version": 2,
+      "computed_context_length": 32768
+    },
+    {
+      "id": "00000000-0000-4000-8000-00000000c002",
+      "name": "fanout-p2c",
+      "strategy": "p2c",
+      "models": [
+        {
+          "id": "p1",
+          "kind": "model",
+          "model": "lannode/medium-model",
+          "weight": 0,
+          "providerId": "lannode"
+        },
+        {
+          "id": "p2",
+          "kind": "model",
+          "model": "privnode/large-model",
+          "weight": 0,
+          "providerId": "privnode"
+        }
+      ],
+      "config": {
+        "targetTimeoutMs": 300000
+      },
+      "version": 2
+    },
+    {
+      "id": "00000000-0000-4000-8000-00000000c003",
+      "name": "spill",
+      "strategy": "priority",
+      "models": [
+        {
+          "id": "q1",
+          "kind": "model",
+          "model": "loopnode/small-model",
+          "weight": 0,
+          "providerId": "loopnode",
+          "connectionId": "conn-loop"
+        },
+        {
+          "id": "q2",
+          "kind": "model",
+          "model": "lannode/medium-model",
+          "weight": 0,
+          "providerId": "lannode",
+          "connectionId": "conn-lan"
+        }
+      ],
+      "config": {
+        "targetTimeoutMs": 600000
+      },
+      "version": 2
+    },
+    {
+      "id": "00000000-0000-4000-8000-00000000c004",
+      "name": "clean-cloud",
+      "strategy": "priority",
+      "models": [
+        {
+          "id": "r1",
+          "kind": "model",
+          "model": "openai/example-model",
+          "weight": 0,
+          "providerId": "openai"
+        }
+      ],
+      "config": {
+        "targetTimeoutMs": 900000
+      },
+      "version": 2
+    },
+    {
+      "id": "00000000-0000-4000-8000-00000000c005",
+      "name": "agent-main",
+      "strategy": "priority",
+      "models": [
+        {
+          "id": "t1",
+          "kind": "model",
+          "model": "openai/example-model",
+          "weight": 0,
+          "providerId": "openai"
+        }
+      ],
+      "config": {
+        "targetTimeoutMs": 900000
+      },
+      "version": 2,
+      "system_message": "You are a terse assistant.",
+      "tool_filter_regex": "^web_"
+    }
+  ],
+  "total": 5
+}
